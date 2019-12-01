@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const Home = require('./roots/Home')
 const app = express();
+const path = require('path')
 
 //must change your port to this for deployment else it wont work
 const PORT = process.env.PORT || 5000
