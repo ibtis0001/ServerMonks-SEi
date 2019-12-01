@@ -4,6 +4,20 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 
+//must change your port to this for deployment else it wont work
+const PORT = process.env.PORT;
+
+//serves all our static files from the build directory.
+app.use(express.static(path.join(__dirname, "build")));
+
+// After all routes
+// This code essentially serves the index.html file on any unknown routes.
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+app.listen(PORT);
+
 const Home = require('./roots/Home')
 const app = express();
 app.use(cors())
